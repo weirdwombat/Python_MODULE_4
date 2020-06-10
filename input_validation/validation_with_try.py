@@ -4,7 +4,13 @@ def average(score1, score2, score3):
         if score1 < 0:
             raise ValueError
     except ValueError:
-        print("Please try again and enter a positive number for the score to get your average.")
+        print("Please try again and enter a positive number for score 1 to get your average.")
+        raise ValueError
+    try:
+        if score2 < 0:
+            raise ValueError
+    except ValueError:
+        print("Please try again and enter a positive number for score 2 to get your average.")
         raise ValueError
     else:
         return float((score1 + score2 + score3)/NUMBER_TESTS)
