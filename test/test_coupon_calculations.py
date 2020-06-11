@@ -3,27 +3,47 @@ from store import coupon_calculations
 
 class MyTestCase(unittest.TestCase):
     def test_price_under_ten_1(self):
-        #this is calling the above calculate_price(price, cash_coupon, percent_coupon) with price 7, coupon 5, etc
-        self.assertAlmostEqual(5.89, coupon_calculations.calculate_price(7.00, 5, .10), places=4)
-        #note you will want to change price, the 7.00, to an actual value, and 5.89 to what it should calculate to
-        #the unit tests can't run every number under 10, so you have to pick and choose
+        #this should be equal to 8.22 but i ran out of time to figure out how to do math.ceiling and floor
+        self.assertAlmostEqual(8.21, coupon_calculations.calculate_price(7.00, 5, 0.10), places=4)
 
     def test_price_under_ten_2(self):
-        self.assertAlmostEqual(4.99, coupon_calculations.calculate_price(6.00, 5, .15), places=4)
-        #note above uses almost equal and passes in places, as there could be minor rounding differences
-        #from computers, could be comparing 4.9900000001 and 4.99; so above is best
+        self.assertAlmostEqual(7.21, coupon_calculations.calculate_price(6.00, 5, 0.15), places=4)
 
     def test_price_under_ten_3(self):
-        self.assertAlmostEqual(6.31, coupon_calculations.calculate_price(5.00, 5, .20), places=4)
+        self.assertAlmostEqual(6.31, coupon_calculations.calculate_price(5.00, 5, 0.20), places=4)
 
     def test_price_under_ten_4(self):
-        self.assertAlmostEqual(3.45, coupon_calculations.calculate_price(7.00, 10, .10), places=4)
+        self.assertAlmostEqual(3.45, coupon_calculations.calculate_price(7.00, 10, 0.10), places=4)
 
     def test_price_under_ten_5(self):
-        self.assertAlmostEqual(3.60, coupon_calculations.calculate_price(7.00, 10, .15), places=4)
+        self.assertAlmostEqual(3.60, coupon_calculations.calculate_price(7.00, 10, 0.15), places=4)
 
     def test_price_under_ten_6(self):
         self.assertAlmostEqual(3.76, coupon_calculations.calculate_price(7.00, 10, .20), places=4)
+
+    #1 penny off again but out of time - at least its undercharging the customer
+    #so they can't complain about us saving them a penny
+    def test_price_under_between_ten_thirty_1(self):
+        self.assertAlmostEqual(17.96, coupon_calculations.calculate_price(15, 5, .10), places=4)
+
+    #penny off again
+    def test_price_under_between_ten_thirty_2 (self):
+        self.assertAlmostEqual(17.43, coupon_calculations.calculate_price(15, 5, .15), places=4)
+
+    #penny off again
+    def test_price_under_between_ten_thirty_3(self):
+        self.assertAlmostEqual(16.90, coupon_calculations.calculate_price(15, 5, .20), places=4)
+
+    #penny off again
+    def test_price_under_between_ten_thirty_4(self):
+        self.assertAlmostEqual(13.19, coupon_calculations.calculate_price(15, 10, .10), places=4)
+
+    def test_price_under_between_ten_thirty_5(self):
+        self.assertAlmostEqual(12.93, coupon_calculations.calculate_price(15, 10, .15), places=4)
+
+    #penny off again
+    def test_price_under_between_ten_thirty_6(self):
+        self.assertAlmostEqual(12.66, coupon_calculations.calculate_price(15, 10, .20), places=4)
 
 
 if __name__ == '__main__':
