@@ -8,7 +8,9 @@ add the correct amount of shipping(5.95, 7.95, 11.95, or free) and tax.
 
 
 def calculate_shipping(price):
-    if float(price) > float(10):
+    if float(price) >= float(30) and float(price) < float(50):
+        shipping = 11.95
+    elif float(price) >= float(10):
         shipping = 7.95
     else:
         shipping = 5.95
