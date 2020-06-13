@@ -2,13 +2,18 @@
 Program : coupon_calculations.py
 Author : Olivia Kennedy
 Date Last Modified : 06/10/2020
-This program is incomplete, but its goal is to accept input of price, cash coupon, and percent coupon and then
-add the correct amount of shipping(5.95, 7.95, 11.95, or free) and tax.
+This program will accept input of price, cash coupon, and percent coupon and then add the
+correct amount of shipping and tax.
+Shipping is 5.95 for orders less than $10
+Shipping is 7.95 for orders less than $30 but $10 or more
+Shipping is 11.95 for orders less than $50 but $30 or more
+Shipping is free for purchases that are $50 or more
 """
 
-
 def calculate_shipping(price):
-    if float(price) >= float(30) and float(price) < float(50):
+    if float(price) >= float(50):
+        shipping = 0.00
+    elif float(price) >= float(30) and float(price) < float(50):
         shipping = 11.95
     elif float(price) >= float(10):
         shipping = 7.95
