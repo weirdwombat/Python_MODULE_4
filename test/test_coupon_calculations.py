@@ -62,7 +62,7 @@ class MyTestCase(unittest.TestCase):
         self.assertAlmostEqual(48.65, coupon_calculations.calculate_price(56, 5, .10), places=2)
 
     def test_price_over_fifty_2(self):
-        self.assertAlmostEqual(85.60, coupon_calculations.calculate_price(100, 5, .15), places=2)
+        self.assertAlmostEqual(85.59, coupon_calculations.calculate_price(100, 5, .15), places=2)
 
     def test_price_over_fifty_3(self):
         self.assertAlmostEqual(43.25, coupon_calculations.calculate_price(56, 5, .20), places=2)
